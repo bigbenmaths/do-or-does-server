@@ -7,7 +7,20 @@ const app = express();
 const port = 3000;
 
 // --- 3. ตั้งค่า Middleware ---
-app.use(cors()); 
+// ใน server.js
+
+// --- 3. ตั้งค่า Middleware ---
+
+// ** แทนที่ app.use(cors()); ด้วยโค้ดนี้ **
+const corsOptions = {
+  origin: 'https://do-or-does-client.vercel.app', // << ใส่ URL ของ Vercel Frontend ของคุณตรงนี้!
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+app.use(cors(corsOptions));
+// ****************************************
+
+app.use(express.json()); 
+// ... โค้ดที่เหลือเหมือนเดิม ...
 app.use(express.json()); 
 
 // --- 4. คลังข้อมูลสำหรับสร้างคำถาม ---

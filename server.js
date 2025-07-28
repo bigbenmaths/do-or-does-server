@@ -7,9 +7,6 @@ const app = express();
 const port = 3000;
 
 // --- 3. ตั้งค่า Middleware ---
-// ใน server.js
-
-// --- 3. ตั้งค่า Middleware ---
 
 // ** แทนที่ app.use(cors()); ด้วยโค้ดนี้ **
 const corsOptions = {
@@ -37,6 +34,10 @@ const subjects = ["I", "You", "We", "They", "He", "She", "a cat", "My friends", 
 let gameSessions = {};
 
 // --- 6. สร้าง API Endpoints ---
+
+    app.get('/wake-up', (req, res) => {
+    res.status(200).send({ status: 'awake' });
+});
 
 // Endpoint สำหรับเริ่มเกมใหม่
 app.post('/start-game', (req, res) => {
